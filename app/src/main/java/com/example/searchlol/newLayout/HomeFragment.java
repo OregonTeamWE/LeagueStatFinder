@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         Glide.with(freeIconIV2.getContext()).load(iconUrl).into(freeIconIV2);
 
         ImageView freeIconIV3 = getActivity().findViewById(R.id.free_champ3_icon);
-        iconUrl = String.format("https://opgg-static.akamaized.net/images/profile_icons/profileIcon%s.jpg", String.valueOf("20"));
+        iconUrl = String.format("https://opgg-static.akamaized.net/images/profile_icons/profileIcon%s.jpg", String.valueOf("11"));
         Glide.with(freeIconIV3.getContext()).load(iconUrl).into(freeIconIV3);
     }
 }
