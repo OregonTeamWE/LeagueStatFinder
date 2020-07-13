@@ -76,11 +76,6 @@ public class homeActivity extends AppCompatActivity {
         });
     }
 
-    public void myListener(){
-
-    }
-
-
 
 }
 
