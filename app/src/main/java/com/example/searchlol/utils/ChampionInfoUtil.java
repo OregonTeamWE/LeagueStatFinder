@@ -1,7 +1,6 @@
 package com.example.searchlol.utils;
 
 import android.net.Uri;
-import android.util.Log;
 import com.google.gson.Gson;
 
 import com.example.searchlol.dataclass.ChampionInfo;

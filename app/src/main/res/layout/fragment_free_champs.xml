@@ -5,37 +5,184 @@
     android:layout_height="match_parent"
     >
 
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/free_champ1_icon"
             android:layout_width="136dp"
-            android:layout_height="206dp"
+            android:layout_height="230dp"
+            android:layout_marginHorizontal="34dp"
             android:contentDescription="ICON"
+            android:scaleType="fitXY"
             android:gravity="center" />
 
         <ImageView
             android:id="@+id/free_champ2_icon"
-            android:layout_width="137dp"
-            android:layout_height="206dp"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_toRightOf="@+id/free_champ1_icon"
+            android:layout_marginHorizontal="34dp"
             android:contentDescription="ICON"
+            android:scaleType="fitXY"
             android:gravity="center" />
 
         <ImageView
             android:id="@+id/free_champ3_icon"
             android:layout_width="136dp"
-            android:layout_height="206dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/free_champ1_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
             android:contentDescription="ICON"
+            android:scaleType="fitXY"
             android:gravity="center" />
-    </LinearLayout>
 
+        <ImageView
+            android:id="@+id/free_champ4_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_toRightOf="@+id/free_champ1_icon"
+            android:layout_below="@+id/free_champ2_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Yeah,this is my Free Champions of the Week" />
+        <ImageView
+            android:id="@+id/free_champ5_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/free_champ3_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ6_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_toRightOf="@+id/free_champ1_icon"
+            android:layout_below="@+id/free_champ4_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ7_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/free_champ5_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ8_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_toRightOf="@+id/free_champ1_icon"
+            android:layout_below="@+id/free_champ6_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ9_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/free_champ7_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ10_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_toRightOf="@+id/free_champ1_icon"
+            android:layout_below="@+id/free_champ8_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ11_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/free_champ9_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ12_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_toRightOf="@+id/free_champ1_icon"
+            android:layout_below="@+id/free_champ10_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ13_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/free_champ11_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ14_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_toRightOf="@+id/free_champ1_icon"
+            android:layout_below="@+id/free_champ12_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/free_champ15_icon"
+            android:layout_width="136dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/free_champ13_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="34dp"
+            android:contentDescription="ICON"
+            android:scaleType="fitXY"
+            android:gravity="center" />
+    </RelativeLayout>
+    </ScrollView>
 
 </FrameLayout>

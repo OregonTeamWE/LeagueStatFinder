@@ -3,6 +3,7 @@ package com.example.searchlol.utils;
 import android.net.Uri;
 
 import com.example.searchlol.dataclass.ChampionMasteryClass;
+import com.example.searchlol.dataclass.FreeChampionInfo;
 import com.example.searchlol.dataclass.RankClass;
 import com.example.searchlol.dataclass.SummonerClass;
 import com.google.gson.Gson;
@@ -12,6 +13,7 @@ public class RiotSummonerUtils {
     private final static String SUMMONERS_BASE_URL = "api.riotgames.com/lol/summoner/v4/summoners/by-name/";
     private final static String SUMMONERS_CHAMPION_URL = "api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/"; //encryptedid->id
     private final static String SUMMONERS_RANK_URL = "api.riotgames.com/lol/league/v4/entries/by-summoner/";
+    private final static String FREE_CHAMPION_URL ="https://na1.api.riotgames.com/lol/platform/v3/champion-rotations";
 
     private final static String API_KEY = "RGAPI-cbab7df3-8f08-41ab-8b12-e6a246a09224";
     private static String REGION = "NA1.";
@@ -41,9 +43,26 @@ public class RiotSummonerUtils {
                 .toString();
     }
 
+    public static String buildChampionURL(String name){
+        return Uri.parse(FREE_CHAMPION_URL).buildUpon()
+                .appendPath(mId)
+                .appendQueryParameter("api_key", API_KEY)
+                .toString();
+    }
+
     public static SummonerClass parseSummonerResult(String json) {
         Gson gson = new Gson();
         SummonerClass results = gson.fromJson(json, SummonerClass.class);
+        if (results != null) {
+            return results;
+        } else {
+            return null;
+        }
+    }
+
+    public static FreeChampionInfo parseFreeChamp(String json){
+        Gson gson = new Gson();
+        FreeChampionInfo results = gson.fromJson(json, FreeChampionInfo.class);
         if (results != null) {
             return results;
         } else {

@@ -18,7 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.searchlol.data.FreeChampionRepository;
 import com.example.searchlol.data.SummonerSearchRepository;
+import com.example.searchlol.dataclass.FreeChampionInfo;
 import com.example.searchlol.dataclass.SummonerClass;
 
 import com.example.searchlol.adapter.SummonerSearchAdapter;
@@ -101,8 +103,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                FreeChampionRepository myFreeRepo=new FreeChampionRepository();
+                myFreeRepo.loadSearchResults("");
                 Intent homeIntent = new Intent(this, homeActivity.class);
-                startActivity(homeIntent);
+                myTimer = new Timer();
+                myTimer.scheduleAtFixedRate(new TimerTask() {
+                    public void run() {
+                        if (trigger == 1) {
+                            startActivity(homeIntent);
+                            trigger = 0;
+                            myTimer.cancel();
+                        }
+                    }
+                }, 500, 500);
+
                 return true;
             case R.id.nav_search:
                 Intent mainIntent = new Intent(this, MainActivity.class);
