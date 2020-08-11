@@ -1,18 +1,28 @@
 package com.example.searchlol;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -31,7 +41,7 @@ import com.example.searchlol.utils.ChampionInfoUtil;
 import com.example.searchlol.utils.NetworkUtils;
 import com.example.searchlol.viewmodel.SavedSummonerViewModel;
 
-public class SummonerDetailActivity extends AppCompatActivity implements View.OnClickListener {
+public class SummonerDetailActivity extends Fragment implements View.OnClickListener {
 
     public static final String EXTRA_GITHUB_REPO = "SummonerDetail";
     public Boolean setOnce = false;
@@ -53,6 +63,16 @@ public class SummonerDetailActivity extends AppCompatActivity implements View.On
     private static String accountId;
     private SavedSummonerViewModel savedSummonerViewModel;
     private boolean like;
+
+    private FragmentActivity myContext;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        return inflater.inflate(R.layout.fragment_lolmatch, container, false);
+    }
 
     public void receiveData(SummonerClass myResult) {
         mRepo = myResult;
@@ -121,84 +141,84 @@ public class SummonerDetailActivity extends AppCompatActivity implements View.On
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_summoner_detail);
+        setHasOptionsMenu(true);
 
         savedSummonerViewModel = new ViewModelProvider(
                 this,
-                new ViewModelProvider.AndroidViewModelFactory(getApplication()))
+                new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication()))
                 .get(SavedSummonerViewModel.class);
 
-        Intent intent = getIntent();
-        if (intent != null && intent.hasExtra(EXTRA_GITHUB_REPO)) {
-            TextView repoLevelTV = findViewById(R.id.tv_summoner_Level);
+        Intent intent = getActivity().getIntent();
+
+        if (intent != null) {
+            TextView repoLevelTV = getActivity().findViewById(R.id.tv_summoner_Level);
             repoLevelTV.setText(myLevel);
-            TextView repoNameTV = findViewById(R.id.tv_summoner_name);
+            TextView repoNameTV = getActivity().findViewById(R.id.tv_summoner_name);
             repoNameTV.setText(myUsername);
-            TextView repoRankTV = findViewById(R.id.tv_Rank);
+            TextView repoRankTV = getActivity().findViewById(R.id.tv_Rank);
             repoRankTV.setText(mRankMess);
 
-            TextView repoFirst1TV = findViewById(R.id.tv_champ_mastery_name1);
-            Log.d("TAG", "name 1 " + mChamp1);
-            Log.d("TAG", "Bio 1 " + mChampBio1);
+            TextView repoFirst1TV = getActivity().findViewById(R.id.tv_champ_mastery_name1);
+            //Log.d("TAG", "name 1 " + mChamp1);
+            //Log.d("TAG", "Bio 1 " + mChampBio1);
             repoFirst1TV.setText(mChamp1);
-            TextView repoFirst2TV = findViewById(R.id.tv_champ_mastery1);
+            TextView repoFirst2TV = getActivity().findViewById(R.id.tv_champ_mastery1);
             repoFirst2TV.setText(String.valueOf(c1Points));
-            TextView repoFirst3TV = findViewById(R.id.tv_champ_level1);
+            TextView repoFirst3TV = getActivity().findViewById(R.id.tv_champ_level1);
             repoFirst3TV.setText(String.valueOf(c1Level));
 
-            TextView repoSecond1TV = findViewById(R.id.tv_champ_mastery_name2);
-            Log.d("TAG", "name 2 " + mChamp2);
-            Log.d("TAG", "Bio 2 " + mChampBio2);
+            TextView repoSecond1TV = getActivity().findViewById(R.id.tv_champ_mastery_name2);
+            //Log.d("TAG", "name 2 " + mChamp2);
+            //Log.d("TAG", "Bio 2 " + mChampBio2);
             repoSecond1TV.setText(mChamp2);
-            TextView repoSecond2TV = findViewById(R.id.tv_champ_mastery2);
+            TextView repoSecond2TV = getActivity().findViewById(R.id.tv_champ_mastery2);
             repoSecond2TV.setText(String.valueOf(c2Points));
-            TextView repoSecond3TV = findViewById(R.id.tv_champ_level2);
+            TextView repoSecond3TV = getActivity().findViewById(R.id.tv_champ_level2);
             repoSecond3TV.setText(String.valueOf(c2Level));
 
-            TextView repoThird1TV = findViewById(R.id.tv_champ_mastery_name3);
-            Log.d("TAG", "name 3 " + mChamp3);
-            Log.d("TAG", "Bio 3 " + mChampBio3);
+            TextView repoThird1TV = getActivity().findViewById(R.id.tv_champ_mastery_name3);
+            //Log.d("TAG", "name 3 " + mChamp3);
+            //Log.d("TAG", "Bio 3 " + mChampBio3);
             repoThird1TV.setText(mChamp3);
-            TextView repoThird2TV = findViewById(R.id.tv_champ_mastery3);
+            TextView repoThird2TV = getActivity().findViewById(R.id.tv_champ_mastery3);
             repoThird2TV.setText(String.valueOf(c3Points));
-            TextView repoThird3TV = findViewById(R.id.tv_champ_level3);
+            TextView repoThird3TV = getActivity().findViewById(R.id.tv_champ_level3);
             repoThird3TV.setText(String.valueOf(c3Level));
 
-            ImageView repoIconIV = findViewById(R.id.tv_summoner_id);
+            ImageView repoIconIV = getActivity().findViewById(R.id.tv_summoner_id);
             String iconUrl = String.format("https://opgg-static.akamaized.net/images/profile_icons/profileIcon%s.jpg", String.valueOf(myIcon));
-            TextView repoDateTV = findViewById(R.id.tv_Date_des);
+            TextView repoDateTV = getActivity().findViewById(R.id.tv_Date_des);
             repoDateTV.setText(changeDate(myDate));
             Glide.with(repoIconIV.getContext()).load(iconUrl).into(repoIconIV);
 
             repoIconIV.setOnClickListener(this);
 
-
-            ImageView championIcon1 = findViewById(R.id.iv_champ1);
-            ImageView championIcon2 = findViewById(R.id.iv_champ2);
-            ImageView championIcon3 = findViewById(R.id.iv_champ3);
+            ImageView championIcon1 = getActivity().findViewById(R.id.iv_champ1);
+            ImageView championIcon2 = getActivity().findViewById(R.id.iv_champ2);
+            ImageView championIcon3 = getActivity().findViewById(R.id.iv_champ3);
             String champion1Url = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/" + c1Name + ".png";
             String champion2Url = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/" + c2Name + ".png";
             String champion3Url = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/" + c3Name + ".png";
-            Log.d("TAG", "champion Icon 1: " + champion1Url);
+            //Log.d("TAG", "champion Icon 1: " + champion1Url);
             Glide.with(championIcon1.getContext()).load(champion1Url).into(championIcon1);
-            Log.d("TAG", "champion Icon 2: " + champion2Url);
+            //Log.d("TAG", "champion Icon 2: " + champion2Url);
             Glide.with(championIcon2.getContext()).load(champion2Url).into(championIcon2);
-            Log.d("TAG", "champion Icon 3: " + champion3Url);
+            //Log.d("TAG", "champion Icon 3: " + champion3Url);
             Glide.with(championIcon3.getContext()).load(champion3Url).into(championIcon3);
 
             championIcon1.setOnClickListener(this);
             championIcon2.setOnClickListener(this);
             championIcon3.setOnClickListener(this);
 
-            Button historyButton = findViewById(R.id.search_history_button);
+            Button historyButton = getActivity().findViewById(R.id.search_history_button);
             historyButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent newIntent = new Intent(SummonerDetailActivity.this, HistoryActivity.class);
-                    newIntent.putExtra("userID", accountId);
-                    startActivity(newIntent);
+                    Intent intent = new Intent(getActivity(), HistoryActivity.class);
+                    intent.putExtra("userID", accountId);
+                    startActivity(intent);
                 }
 
             });
@@ -207,10 +227,10 @@ public class SummonerDetailActivity extends AppCompatActivity implements View.On
 
         savedSummonerViewModel = new ViewModelProvider(
                 this,
-                new ViewModelProvider.AndroidViewModelFactory(getApplication())
+                new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())
         ).get(SavedSummonerViewModel.class);
 
-        savedSummonerViewModel.getAllSummoners().observe(this, new Observer<List<SummonerClass>>() {
+        savedSummonerViewModel.getAllSummoners().observe(getViewLifecycleOwner(), new Observer<List<SummonerClass>>() {
             @Override
             public void onChanged(List<SummonerClass> gitHubRepos) {
                 Log.d("SQL size", String.valueOf(gitHubRepos.size()));
@@ -222,21 +242,19 @@ public class SummonerDetailActivity extends AppCompatActivity implements View.On
 
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.repo_detail, menu);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        getActivity().getMenuInflater().inflate(R.menu.repo_detail, menu);
         final MenuItem item = menu.findItem(R.id.action_save_favorite_summoner);
         like = savedSummonerViewModel.getSummonerByName(mId);
 
-
-        Log.d("TAG", String.valueOf(like));
+        //Log.d("TAG", String.valueOf(like));
 
         if (like) {
             item.setIcon(R.drawable.ic_action_checkedfavorite);
         }
 
-        return true;
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -261,7 +279,6 @@ public class SummonerDetailActivity extends AppCompatActivity implements View.On
                 }
             case R.id.action_view_more:
 
-
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -273,32 +290,41 @@ public class SummonerDetailActivity extends AppCompatActivity implements View.On
             case R.id.tv_summoner_id:
                 setOnce = !setOnce;
                 break;
+
             case R.id.iv_champ1:
                 mAct = new ChampionDetailActivity();
                 mAct.receiveMaster(mC1);
                 mAct.receiveBio(mChampBio1);
-                Intent sharedIntent = new Intent(this, ChampionDetailActivity.class);
-                startActivity(sharedIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.iv_champ2:
                 mAct = new ChampionDetailActivity();
                 mAct.receiveMaster(mC2);
                 mAct.receiveBio(mChampBio2);
-                Intent sharedIntent2 = new Intent(this, ChampionDetailActivity.class);
-                startActivity(sharedIntent2);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.iv_champ3:
                 mAct = new ChampionDetailActivity();
                 mAct.receiveMaster(mC3);
                 mAct.receiveBio(mChampBio3);
-                Intent sharedIntent3 = new Intent(this, ChampionDetailActivity.class);
-                startActivity(sharedIntent3);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
 
+
+            //FragmentTransaction ft = getFragmentManager().beginTransaction();
+            //ft.replace(R.id.frameLayout, fragment);
+            //ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            //ft.commit();
+
         }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        myContext=(FragmentActivity) activity;
+        super.onAttach(activity);
     }
 
     class ChampionTask1 extends AsyncTask<String, Void, String> {
@@ -324,7 +350,7 @@ public class SummonerDetailActivity extends AppCompatActivity implements View.On
             ChampionInfo result = ChampionInfoUtil.parseChampionInfo(s);
             SummonerDetailActivity summonerDetailActivity = new SummonerDetailActivity();
             summonerDetailActivity.receiveChampionName1(result);
-            Log.d("TAG", "onCreate championInfo: " + result.name + "\n" + result.shortBio);
+            //Log.d("TAG", "onCreate championInfo: " + result.name + "\n" + result.shortBio);
         }
     }
 
@@ -351,7 +377,7 @@ public class SummonerDetailActivity extends AppCompatActivity implements View.On
             ChampionInfo result = ChampionInfoUtil.parseChampionInfo(s);
             SummonerDetailActivity summonerDetailActivity = new SummonerDetailActivity();
             summonerDetailActivity.receiveChampionName2(result);
-            Log.d("TAG", "onCreate championInfo: " + result.name + "\n" + result.shortBio);
+            //Log.d("TAG", "onCreate championInfo: " + result.name + "\n" + result.shortBio);
         }
     }
 
@@ -378,7 +404,7 @@ public class SummonerDetailActivity extends AppCompatActivity implements View.On
             ChampionInfo result = ChampionInfoUtil.parseChampionInfo(s);
             SummonerDetailActivity summonerDetailActivity = new SummonerDetailActivity();
             summonerDetailActivity.receiveChampionName3(result);
-            Log.d("TAG", "onCreate championInfo: " + result.name + "\n" + result.shortBio);
+            //Log.d("TAG", "onCreate championInfo: " + result.name + "\n" + result.shortBio);
 
             MainActivity.trigger = 1;
         }

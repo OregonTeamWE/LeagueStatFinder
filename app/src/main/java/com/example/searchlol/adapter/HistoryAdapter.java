@@ -43,7 +43,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
         holder.bind(mMatchInfo.get(position));
-
     }
 
     @Override
@@ -67,7 +66,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         private ImageView item5;
         private ImageView item6;
         private CardView linearLayout;
-
 
         public HistoryViewHolder(View itemView) {
             super(itemView);

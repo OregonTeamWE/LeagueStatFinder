@@ -41,7 +41,6 @@ public class HistoryActivity extends AppCompatActivity {
         Log.d(TAG, mID);
         mErrorMessageTV = findViewById(R.id.tv_error_message);
 
-
         mHistoryAdapter = new HistoryAdapter();
         historyRV = findViewById(R.id.history_RV);
         historyRV.setAdapter(mHistoryAdapter);

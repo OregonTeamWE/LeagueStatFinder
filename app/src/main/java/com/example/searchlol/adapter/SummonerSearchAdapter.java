@@ -43,7 +43,7 @@ public class SummonerSearchAdapter extends RecyclerView.Adapter<SummonerSearchAd
     @Override
     public SearchResultViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.activity_summoner_detail, parent, false);
+        View view = inflater.inflate(R.layout.activity_lolhistory, parent, false);
         return new SearchResultViewHolder(view);
     }
 

@@ -1,11 +1,7 @@
 package com.example.searchlol.utils;
 
 import android.net.Uri;
-import android.util.Log;
-
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 import com.example.searchlol.dataclass.ChampionInfo;
 
@@ -17,7 +13,6 @@ public class ChampionInfoUtil {
         public String name;
         public String title;
         public String shortBio;
-
     }
 
     public static String buildChampionInfoURL(int championId) {

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/matchtft_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivtft_match_champ"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    />
+
+                <TextView
+                    android:id="@+id/mytftlevel"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:gravity="center"
+                    android:layout_alignBottom="@+id/ivtft_match_champ"
+                    android:layout_alignRight="@+id/ivtft_match_champ"
+                    android:background="#000000"
+                    android:textColor="#dbd5d5"
+                    android:textSize="18dp"
+                    >
+                </TextView>
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                <TextView
+                    android:id="@+id/tft_placement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="Detailed Info"
+                        android:clickable="true"
+                        android:layout_alignParentRight="true"
+                        >
+
+                    </TextView>
+
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/tft_lasttime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tft_datetime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#55111111"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iv_tftchamp_1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/emptyicon" />
+
+            <ImageView
+                android:id="@+id/iv_tftchamp_2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/emptyicon" />
+
+            <ImageView
+                android:id="@+id/iv_tftchamp_3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/emptyicon" />
+
+            <ImageView
+                android:id="@+id/iv_tftchamp_4"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/emptyicon" />
+
+            <ImageView
+                android:id="@+id/iv_tftchamp_5"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/emptyicon" />
+
+            <ImageView
+                android:id="@+id/iv_tftchamp_6"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/emptyicon" />
+
+            <ImageView
+                android:id="@+id/iv_tftchamp_7"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/emptyicon" />
+
+            <ImageView
+                android:id="@+id/iv_tftchamp_8"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/emptyicon" />
+
+            <ImageView
+                android:id="@+id/iv_tftchamp_9"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/emptyicon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#55111111"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/lv_tft_champ1"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textSize="15dp"
+            android:textColor="#f2f2f0" />
+
+        <TextView
+            android:id="@+id/lv_tft_champ2"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textSize="15dp"
+            android:textColor="#f2f2f0" />
+
+        <TextView
+            android:id="@+id/lv_tft_champ3"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textSize="15dp"
+            android:textColor="#f2f2f0" />
+
+        <TextView
+            android:id="@+id/lv_tft_champ4"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textSize="15dp"
+            android:textColor="#f2f2f0" />
+
+        <TextView
+            android:id="@+id/lv_tft_champ5"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textSize="15dp"
+            android:textColor="#f2f2f0" />
+
+        <TextView
+            android:id="@+id/lv_tft_champ6"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textSize="15dp"
+            android:textColor="#f2f2f0" />
+
+        <TextView
+            android:id="@+id/lv_tft_champ7"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textSize="15dp"
+            android:textColor="#f2f2f0" />
+
+        <TextView
+            android:id="@+id/lv_tft_champ8"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textSize="15dp"
+            android:textColor="#f2f2f0" />
+
+        <TextView
+            android:id="@+id/lv_tft_champ9"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textSize="15dp"
+            android:textColor="#f2f2f0" />
+    </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

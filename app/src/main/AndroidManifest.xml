@@ -26,7 +26,19 @@
             android:name=".ChampionDetailActivity"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".TFTOpponentActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LOLActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".TFTActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".homeActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"

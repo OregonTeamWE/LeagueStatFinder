@@ -9,19 +9,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.searchlol.data.SummonerSearchRepository;
 import com.example.searchlol.dataclass.SummonerClass;
 import com.example.searchlol.adapter.SavedSummonerAdapter;
 import com.example.searchlol.viewmodel.SavedSummonerViewModel;
+
+import static com.example.searchlol.MainActivity.trigger;
 
 public class SavedSummonerActivity extends AppCompatActivity implements SavedSummonerAdapter.OnNameItemClickListener {
 
     private SavedSummonerViewModel mViewModel;
     private SavedSummonerAdapter adapter;
+    static Timer myTimer = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,6 @@ public class SavedSummonerActivity extends AppCompatActivity implements SavedSum
         savedReposRV.setHasFixedSize(true);
 
         savedReposRV.setAdapter(adapter);
-
 
         mViewModel = new ViewModelProvider(
                 this,
@@ -68,9 +73,25 @@ public class SavedSummonerActivity extends AppCompatActivity implements SavedSum
     @Override
     public void onNameItemClick(SummonerClass summonerClass) {
         //load summoner name
-        Intent intent = new Intent(this, SummonerDetailActivity.class);
-        intent.putExtra(SummonerDetailActivity.EXTRA_GITHUB_REPO, summonerClass);
-        startActivity(intent);
+        SummonerSearchRepository newSearch = new SummonerSearchRepository("");
+        newSearch.loadSearchResults(summonerClass.name);
+
+        Intent intent = new Intent(this, LOLActivity.class);
+
+        myTimer = new Timer();
+        myTimer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                if (trigger == 1) {
+                    startActivity(intent);
+                    trigger = 0;
+                    myTimer.cancel();
+                }else if (trigger ==2){
+                    myTimer.cancel();
+                    trigger = 0;
+                }
+            }
+        }, 500, 500);
+
     }
 
 }
