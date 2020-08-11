@@ -3,13 +3,15 @@ package com.example.searchlol.asynctask;
 import android.os.AsyncTask;
 import android.util.Log;
 import com.example.searchlol.dataclass.FreeChampionInfo;
-import com.example.searchlol.newLayout.HomeFragment;
+import com.example.searchlol.newLayout.FreeChampFragment;
+import com.example.searchlol.newLayout.StoreFragment;
 import com.example.searchlol.utils.NetworkUtils;
 import com.example.searchlol.utils.RiotSummonerUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.searchlol.MainActivity.myHomeTrigger;
 import static com.example.searchlol.MainActivity.trigger;
 
 public class FreeChampionAsyncTask extends AsyncTask<String, Void, String> {
@@ -35,8 +37,10 @@ public class FreeChampionAsyncTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         FreeChampionInfo result = null;
-        HomeFragment myfragact;
-        myfragact = new HomeFragment();
+        FreeChampFragment myfragact;
+        StoreFragment storeFrag;
+        myfragact = new FreeChampFragment();
+        storeFrag = new StoreFragment();
         if (s != null) {
             result = RiotSummonerUtils.parseFreeChamp(s);//json
             if (result != null) {
@@ -45,10 +49,11 @@ public class FreeChampionAsyncTask extends AsyncTask<String, Void, String> {
                 if(mylist!=null) {
                     Log.d(TAG, (mylist).toString());
                     myfragact.getChampList(mylist);
-                    trigger=1;
+                    storeFrag.getChampList(mylist);
+                    myHomeTrigger=1;
                 }
                 else{//result==null;
-                    trigger=2;
+                    myHomeTrigger=2;
                 }
             }
         }

@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.searchlol.newLayout.HomeFragment;
+import com.example.searchlol.newLayout.FreeChampFragment;
+import com.example.searchlol.newLayout.LiveFragment;
 import com.example.searchlol.newLayout.NewsFragment;
+import com.example.searchlol.newLayout.StoreFragment;
 import com.google.android.material.tabs.TabLayout;
 
 
@@ -26,7 +28,7 @@ public class homeActivity extends AppCompatActivity {
 
         TabLayout mytabLayout= findViewById(R.id.tab_layout);
 
-        fragment = new HomeFragment();
+        fragment = new FreeChampFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, fragment);
@@ -39,7 +41,7 @@ public class homeActivity extends AppCompatActivity {
                 // Fragment fragment = null;
                 switch (tab.getPosition()) {
                     case 0:
-                        fragment = new HomeFragment();
+                        fragment = new FreeChampFragment();
                         Log.d("homeActivity onClicked","Click on FREE CHAMPION");
                         break;
                     case 1:
@@ -47,11 +49,11 @@ public class homeActivity extends AppCompatActivity {
                         Log.d("homeActivity onClicked","Click on NEWS");
                         break;
                     case 2:
-                        fragment = new HomeFragment();
+                        fragment = new StoreFragment();
                         Log.d("homeActivity onClicked","Click on STORE SALES");
                         break;
                     case 3:
-                        fragment = new HomeFragment();
+                        fragment = new LiveFragment();
                         Log.d("homeActivity onClicked","Click on LIVE");
                         break;
                 }

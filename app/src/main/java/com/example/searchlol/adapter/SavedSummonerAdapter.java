@@ -1,13 +1,16 @@
 package com.example.searchlol.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.searchlol.R;
 import com.example.searchlol.dataclass.SummonerClass;
 
@@ -61,16 +64,18 @@ public class SavedSummonerAdapter extends RecyclerView.Adapter<SavedSummonerAdap
         public SavedItemViewHolder(View itemView) {
             super(itemView);
             mNameTV = itemView.findViewById(R.id.sl_item);
+
             itemView.setOnClickListener(this);
         }
 
         public void bind(SummonerClass nameClass) {
-            mNameTV.setText("Summoner ID: " + nameClass.name);
+            mNameTV.setText(nameClass.name);
         }
 
         @Override
         public void onClick(View v) {
             SummonerClass name = mNameList.get(getAdapterPosition());
+            Log.d("IN THE GROUP", name.name);
             mOnNameItemClickListener.onNameItemClick(name);
         }
     }

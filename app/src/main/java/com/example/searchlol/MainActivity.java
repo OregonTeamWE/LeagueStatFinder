@@ -2,11 +2,8 @@ package com.example.searchlol;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,15 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.searchlol.data.FreeChampionRepository;
 import com.example.searchlol.data.SummonerSearchRepository;
-import com.example.searchlol.dataclass.FreeChampionInfo;
 import com.example.searchlol.dataclass.SummonerClass;
-
 import com.example.searchlol.adapter.SummonerSearchAdapter;
 import com.example.searchlol.utils.HistoryUtils;
 import com.example.searchlol.utils.RiotSummonerUtils;
+import com.example.searchlol.utils.TFTUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Timer;
@@ -37,9 +32,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private EditText mSearchSummonerET;
     private SummonerClass summonerClass;
     public static int trigger = 0;
+    public static int myHomeTrigger =0;
     static Timer myTimer = null;
     private RiotSummonerUtils overallUtils;
     private HistoryUtils matchUtils;
+    private TFTUtils tftUtils;
 
 
     @Override
@@ -102,6 +99,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
+            case R.id.nav_search:
+                Intent mainIntent = new Intent(this, MainActivity.class);
+                startActivity(mainIntent);
+                return true;
             case R.id.nav_home:
                 FreeChampionRepository myFreeRepo=new FreeChampionRepository();
                 myFreeRepo.loadSearchResults("");
@@ -109,18 +110,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 myTimer = new Timer();
                 myTimer.scheduleAtFixedRate(new TimerTask() {
                     public void run() {
-                        if (trigger == 1) {
+                        if (myHomeTrigger == 1) {
                             startActivity(homeIntent);
-                            trigger = 0;
+                            myHomeTrigger = 0;
                             myTimer.cancel();
+                        }else if (myHomeTrigger ==2){
+                            myTimer.cancel();
+                            myHomeTrigger = 0;
                         }
                     }
                 }, 500, 500);
 
-                return true;
-            case R.id.nav_search:
-                Intent mainIntent = new Intent(this, MainActivity.class);
-                startActivity(mainIntent);
                 return true;
             case R.id.nav_saved_repos:
                 Intent savedReposIntent = new Intent(this, SavedSummonerActivity.class);
@@ -137,14 +137,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onSearchResultClicked(SummonerClass repo) {
-        Intent intent = new Intent(this, SummonerDetailActivity.class);
-        intent.putExtra(SummonerDetailActivity.EXTRA_GITHUB_REPO, repo);
+        Intent intent = new Intent(this, LOLActivity.class);
+        intent.putExtra(LOLActivity.EXTRA_GITHUB_REPO, repo);
         startActivity(intent);
     }
 
     public void startSecondActivity(SummonerClass repo) {
-        Intent intent = new Intent(this, SummonerDetailActivity.class);
-        intent.putExtra(SummonerDetailActivity.EXTRA_GITHUB_REPO, repo);
+        Intent intent = new Intent(this, LOLActivity.class);
+        intent.putExtra(LOLActivity.EXTRA_GITHUB_REPO, repo);
         startActivity(intent);
     }
 
@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         overallUtils=new RiotSummonerUtils();
         matchUtils=new HistoryUtils();
+        tftUtils = new TFTUtils();
 
         String sort = preferences.getString(
                 getString(R.string.pref_sort_key),
@@ -164,7 +165,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         overallUtils.changeRegion(sort);//change URL for overall match
         matchUtils.changeMregion(sort); //change URL for match details
+        tftUtils.changeRegion(sort);
         summonerSearchRepository.loadSearchResults(name);
+
     }
 
 }

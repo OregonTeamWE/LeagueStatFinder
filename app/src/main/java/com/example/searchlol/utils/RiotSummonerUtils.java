@@ -1,12 +1,15 @@
 package com.example.searchlol.utils;
 
 import android.net.Uri;
-
 import com.example.searchlol.dataclass.ChampionMasteryClass;
 import com.example.searchlol.dataclass.FreeChampionInfo;
 import com.example.searchlol.dataclass.RankClass;
 import com.example.searchlol.dataclass.SummonerClass;
+import com.example.searchlol.dataclass.TFTSummonerClass;
 import com.google.gson.Gson;
+import org.json.JSONArray;
+import java.util.ArrayList;
+
 import static com.example.searchlol.asynctask.SummonerAsyncTask.mId;
 
 public class RiotSummonerUtils {
@@ -16,6 +19,7 @@ public class RiotSummonerUtils {
     private final static String FREE_CHAMPION_URL ="https://na1.api.riotgames.com/lol/platform/v3/champion-rotations";
 
     private final static String API_KEY = "RGAPI-cbab7df3-8f08-41ab-8b12-e6a246a09224";
+    private final static String TFTAPI_KEY ="RGAPI-d1f80c66-22fe-409e-a099-a0a18483c6a5";
     private static String REGION = "NA1.";
 
     public void changeRegion(String region){
@@ -45,7 +49,6 @@ public class RiotSummonerUtils {
 
     public static String buildChampionURL(String name){
         return Uri.parse(FREE_CHAMPION_URL).buildUpon()
-                .appendPath(mId)
                 .appendQueryParameter("api_key", API_KEY)
                 .toString();
     }
@@ -58,6 +61,35 @@ public class RiotSummonerUtils {
         } else {
             return null;
         }
+    }
+
+    public static TFTSummonerClass parseTFTSummonerResult(String json) {
+        Gson gson = new Gson();
+        TFTSummonerClass results = gson.fromJson(json, TFTSummonerClass.class);
+        if (results != null) {
+            return results;
+        } else {
+            return null;
+        }
+    }
+
+    public static ArrayList<String> parseTFTMatchResult(String json) {
+        ArrayList<String> list = new ArrayList<String>();
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i=0;i<len;i++){
+                    list.add(jsonArray.get(i).toString());
+                }
+                return list;
+            }
+
+        }catch(Exception e){
+
+        }
+
+        return list;
     }
 
     public static FreeChampionInfo parseFreeChamp(String json){

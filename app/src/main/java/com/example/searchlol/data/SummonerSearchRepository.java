@@ -7,8 +7,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.searchlol.asynctask.SummonerAsyncTask;
+import com.example.searchlol.asynctask.TFTSummonerAsyncTask;
 import com.example.searchlol.dataclass.SummonerClass;
 import com.example.searchlol.utils.RiotSummonerUtils;
+import com.example.searchlol.utils.TFTUtils;
+
 import static com.example.searchlol.MainActivity.trigger;
 
 public class SummonerSearchRepository {
@@ -43,10 +46,13 @@ public class SummonerSearchRepository {
         if (shouldExecuteSearch(query)) {
             mCurrentQuery = query;
             String url = RiotSummonerUtils.buildSummonerURL(query);
+            String tfturl = TFTUtils.buildTFTURL(query);
             mSearchResults.setValue(null);
             Log.d(TAG, "executing search with url: " + url);
+            Log.d(TAG, "executing TFT search with url: " + tfturl);
             mLoadingStatus.setValue(Status.LOADING);///loadingindicator
             new SummonerAsyncTask(url, notRank).execute();
+            new TFTSummonerAsyncTask(tfturl, notRank).execute();
         } else {
             Log.d(TAG, "using cached search results");
             trigger=1;

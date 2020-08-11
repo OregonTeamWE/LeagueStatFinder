@@ -17,10 +17,10 @@ import com.example.searchlol.R;
 import java.util.ArrayList;
 import java.util.List;
 //fragment activity
-public class HomeFragment extends Fragment {
+public class FreeChampFragment extends Fragment {
     public static List<Integer> myChampList=new ArrayList<>();
 
-    public HomeFragment() {
+    public FreeChampFragment() {
         // Required empty public constructor, DO NOT DELETE*
 
     }

@@ -1,112 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    >
 
 
-    <RelativeLayout
-        android:id="@+id/rl_summoner_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <ImageView
-            android:id="@+id/tv_summoner_id"
-            android:layout_width="135dp"
-            android:layout_height="135dp"
-            android:contentDescription="@string/icon_content"
-            android:gravity="center" />
-
-        <TextView
-            android:id="@+id/level"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/tv_summoner_id"
-            android:layout_toRightOf="@+id/tv_summoner_id"
-            android:padding="5dp"
-            android:text="@string/summoner_detail_level"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/tv_summoner_Level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/level"
-            android:layout_toRightOf="@+id/level"
-            android:gravity="center_vertical"
-            android:padding="5dp"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_summoner_Level"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/tv_summoner_id"
-            android:layout_toRightOf="@+id/tv_summoner_id"
-            android:padding="5dp"
-            android:text="@string/summoner_detail_name"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/tv_summoner_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_summoner_Level"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/name"
-            android:layout_toRightOf="@+id/name"
-            android:padding="5dp"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/rank"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_summoner_name"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/tv_summoner_id"
-            android:layout_toRightOf="@+id/tv_summoner_id"
-            android:padding="5dp"
-            android:text="@string/summoner_detail_rank"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/tv_Rank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_summoner_name"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/rank"
-            android:layout_toRightOf="@+id/rank"
-            android:padding="5dp"
-            android:textSize="20sp" />
-
-    </RelativeLayout>
-
-    <Button
-        android:id="@+id/search_history_button"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/search_for_history" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -116,6 +15,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/search_history_button"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search_for_history" />
 
             <RelativeLayout
                 android:id="@+id/rl_summoner_solo_rank"
@@ -394,4 +300,4 @@
 
     </ScrollView>
 
-</LinearLayout>
+</FrameLayout>

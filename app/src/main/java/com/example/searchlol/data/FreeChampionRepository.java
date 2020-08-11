@@ -45,6 +45,7 @@ public class FreeChampionRepository {
             mCurrentQuery = query;
             String url = RiotSummonerUtils.buildChampionURL(query);
             mSearchResults.setValue(null);
+            Log.d(TAG,"Before execute, want to make sure: ["+query +"] is null");
             Log.d(TAG, "executing search with url: " + url);
             mLoadingStatus.setValue(Status.LOADING);///loadingindicator
             new FreeChampionAsyncTask(url).execute();

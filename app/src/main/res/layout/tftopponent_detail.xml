@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/matchtft_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/iv_tftplayer0"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tft_error_message2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorAccent"
+                android:padding="16dp"
+                android:text="@string/Loading"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:visibility="invisible" />
+
+
+            <TextView
+                android:id="@+id/iv_tftplayername0"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Summoner Name"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/iv_tftplayer0"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_tftplayername0"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Placement"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/tft_pb_loading_indicator2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f5d742"
+            >
+
+            <ImageView
+                android:id="@+id/iv_tftplayer1"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/iv_tftplayername1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Summoner Name"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/iv_tftplayer1"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_tftplayername1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="1st"
+                android:id="@+id/iv_tftplayerplace1"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#c0c0c0"
+            >
+
+            <ImageView
+                android:id="@+id/iv_tftplayer2"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/iv_tftplayername2"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Summoner Name"
+
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/iv_tftplayer2"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_tftplayername2"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="2nd"
+                android:id="@+id/iv_tftplayerplace2"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ab621f"
+            >
+
+            <ImageView
+                android:id="@+id/iv_tftplayer3"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/iv_tftplayername3"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Summoner Name"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/iv_tftplayer3"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_tftplayername3"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="3rd"
+                android:id="@+id/iv_tftplayerplace3"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7d3d3d"
+            >
+
+            <ImageView
+                android:id="@+id/iv_tftplayer4"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/iv_tftplayername4"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Summoner Name"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/iv_tftplayer4"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_tftplayername4"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="4th"
+                android:id="@+id/iv_tftplayerplace4"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageView
+                android:id="@+id/iv_tftplayer5"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/iv_tftplayername5"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Summoner Name"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/iv_tftplayer5"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_tftplayername5"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="5th"
+                android:id="@+id/iv_tftplayerplace5"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageView
+                android:id="@+id/iv_tftplayer6"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/iv_tftplayername6"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Summoner Name"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/iv_tftplayer6"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_tftplayername6"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="6th"
+                android:id="@+id/iv_tftplayerplace6"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageView
+                android:id="@+id/iv_tftplayer7"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/iv_tftplayername7"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Summoner Name"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/iv_tftplayer7"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_tftplayername7"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="7th"
+                android:id="@+id/iv_tftplayerplace7"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageView
+                android:id="@+id/iv_tftplayer8"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/iv_tftplayername8"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Summoner Name"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/iv_tftplayer8"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_tftplayername8"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="8th"
+                android:id="@+id/iv_tftplayerplace8"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
