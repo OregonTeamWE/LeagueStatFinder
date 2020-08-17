@@ -29,7 +29,6 @@
     <string name="top_1">TOP1 Champion</string>
     <string name="top_3">TOP3 Champion</string>
     <string name="mastery_prompt">Mastery:</string>
-    <string name="last_revision_date">Last Revision Date:</string>
     <string name="icon_content">ICON</string>
 
     <string name="pref_user_key" translatable="false">pref_user</string>
@@ -48,7 +47,16 @@
     <string name="pref_sort_value_RU" translatable="false">RU.</string>
     <string name="pref_sort_value_US" translatable="false">NA1.</string>
     <string name="pref_sort_default" translatable="false">@string/pref_sort_value_US</string>
-    <string name="pref_user_title" translatable="false">Hello summoner</string>
+    <string name="pref_user_title">Hello summoner</string>
+    <string name="free_champs">Free Champs</string>
+    <string name="news">NEWS</string>
+    <string name="store_sales">STORE SALES</string>
+    <string name="live">LIVE</string>
+    <string name="summoner_s_drift">Summoner\'s drift</string>
+    <string name="tft_mode">TFT Mode</string>
+    <string name="view_last_20_tft_match_histories">VIEW LAST 20 TFT MATCH HISTORIES</string>
+    <string name="tft_status_coming_soon">TFT Status Coming Soon</string>
+    <string name="last_revision_date">Last Revision Date:</string>
 
 
 </resources>

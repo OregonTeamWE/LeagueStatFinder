@@ -30,4 +30,13 @@
     <string name="pref_sort_entry_RU">俄服</string>
     <string name="pref_sort_entry_US">美服</string>
     <string name="nav_home">主页</string>
+    <string name="free_champs">免费英雄</string>
+    <string name="news">新闻</string>
+    <string name="store_sales">商店促销</string>
+    <string name="live">比赛</string>
+    <string name="summoner_s_drift">召唤师峡谷</string>
+    <string name="tft_mode">云顶之弈</string>
+    <string name="pref_user_title">你好，召唤师</string>
+    <string name="view_last_20_tft_match_histories">查看最近20场自走棋比赛</string>
+    <string name="tft_status_coming_soon">自走棋数据敬请期待</string>
 </resources>

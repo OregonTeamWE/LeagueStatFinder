@@ -17,23 +17,23 @@
     <com.google.android.material.tabs.TabItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Free Champs"
+        android:text="@string/free_champs"
         />
 
     <com.google.android.material.tabs.TabItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NEWS"
+        android:text="@string/news"
         />
     <com.google.android.material.tabs.TabItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="STORE SALES"
+        android:text="@string/store_sales"
         />
     <com.google.android.material.tabs.TabItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LIVE"
+        android:text="@string/live"
         />
     </com.google.android.material.tabs.TabLayout>
 
