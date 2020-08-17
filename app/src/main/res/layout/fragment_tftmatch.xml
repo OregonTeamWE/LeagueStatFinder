@@ -13,7 +13,7 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="VIEW LAST 20 TFT MATCH HISTORIES" />
+            android:text="@string/view_last_20_tft_match_histories" />
 
         <RelativeLayout
             android:id="@+id/tft_relative_layout"
@@ -38,8 +38,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
             android:id="@+id/tftlevel"
-            android:text="TFT Status Coming Soon"
-            />
+            android:text="@string/tft_status_coming_soon"
+            android:layout_marginStart="20dp" />
 
 
         <TextView
@@ -51,8 +51,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:id="@+id/tftrevisiondate"
-            android:text="Last Revision Date:"
-            />
+            android:text="@string/last_revision_date"
+            android:layout_marginStart="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:id="@+id/tftmydate"
-            />
+            android:layout_marginStart="20dp" />
 
             <ImageView
                 android:layout_width="match_parent"
