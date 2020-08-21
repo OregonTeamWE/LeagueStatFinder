@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.example.searchlol.TFTActivity;
+
 import com.example.searchlol.R;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -49,7 +49,7 @@ public class TFTFragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TFTActivity.class);
+                Intent intent = new Intent(getActivity(), com.example.searchlol.TFTFragment.class);
                 intent.putExtra("puuid", myname);
                 startActivity(intent);
             }

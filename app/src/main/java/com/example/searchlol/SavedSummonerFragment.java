@@ -1,50 +1,50 @@
 package com.example.searchlol;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.searchlol.adapter.SavedSummonerAdapter;
+import com.example.searchlol.data.SummonerSearchRepository;
+import com.example.searchlol.dataclass.SummonerClass;
+import com.example.searchlol.viewmodel.SavedSummonerViewModel;
+
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
-
-import com.example.searchlol.data.SummonerSearchRepository;
-import com.example.searchlol.dataclass.SummonerClass;
-import com.example.searchlol.adapter.SavedSummonerAdapter;
-import com.example.searchlol.viewmodel.SavedSummonerViewModel;
-
 import static com.example.searchlol.MainActivity.trigger;
 
-public class SavedSummonerActivity extends AppCompatActivity implements SavedSummonerAdapter.OnNameItemClickListener {
+public class SavedSummonerFragment extends Fragment implements SavedSummonerAdapter.OnNameItemClickListener {
 
     private SavedSummonerViewModel mViewModel;
     private SavedSummonerAdapter adapter;
     static Timer myTimer = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_saved_name);
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_saved_name,container,false);
         adapter = new SavedSummonerAdapter(this);
 
-        RecyclerView savedReposRV = findViewById(R.id.rv_saved_name);
-        savedReposRV.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView savedReposRV = view.findViewById(R.id.rv_saved_name);
+        savedReposRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
         savedReposRV.setHasFixedSize(true);
 
         savedReposRV.setAdapter(adapter);
 
         mViewModel = new ViewModelProvider(
                 this,
-                new ViewModelProvider.AndroidViewModelFactory(getApplication())
+                new ViewModelProvider.AndroidViewModelFactory(this.getActivity().getApplication())
         ).get(SavedSummonerViewModel.class);
 
         mViewModel.getAllSummoners().observe(this, new Observer<List<SummonerClass>>() {
@@ -64,10 +64,10 @@ public class SavedSummonerActivity extends AppCompatActivity implements SavedSum
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 mViewModel.deleteSavedSummoner(adapter.getNameAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(SavedSummonerActivity.this, "Champion deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SavedSummonerFragment.this.getContext(), "Champion deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(savedReposRV);
-
+         return view;
     }
 
     @Override
@@ -76,13 +76,13 @@ public class SavedSummonerActivity extends AppCompatActivity implements SavedSum
         SummonerSearchRepository newSearch = new SummonerSearchRepository("");
         newSearch.loadSearchResults(summonerClass.name);
 
-        Intent intent = new Intent(this, LOLActivity.class);
+//        final Intent intent = new Intent(this, LOLFragment.class);
 
         myTimer = new Timer();
         myTimer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 if (trigger == 1) {
-                    startActivity(intent);
+//                    startActivity(intent);
                     trigger = 0;
                     myTimer.cancel();
                 }else if (trigger ==2){

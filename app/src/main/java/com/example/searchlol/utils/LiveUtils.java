@@ -3,7 +3,6 @@ package com.example.searchlol.utils;
 import android.net.Uri;
 
 import com.example.searchlol.dataclass.LiveCodeClass;
-import com.example.searchlol.dataclass.SummonerClass;
 import com.google.gson.Gson;
 
 public class LiveUtils {

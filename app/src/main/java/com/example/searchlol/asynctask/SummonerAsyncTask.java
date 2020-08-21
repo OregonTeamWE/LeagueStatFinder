@@ -3,13 +3,14 @@ package com.example.searchlol.asynctask;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import static com.example.searchlol.MainActivity.trigger;
-import com.example.searchlol.SummonerDetailActivity;
+import com.example.searchlol.SummonerDetailFragment;
 import com.example.searchlol.dataclass.SummonerClass;
 import com.example.searchlol.utils.NetworkUtils;
 import com.example.searchlol.utils.RiotSummonerUtils;
 
 import java.io.IOException;
+
+import static com.example.searchlol.MainActivity.trigger;
 
 public class SummonerAsyncTask extends AsyncTask<String, Void, String> {
     public static String mId = "";
@@ -36,8 +37,8 @@ public class SummonerAsyncTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         SummonerClass result = null;
-        SummonerDetailActivity mAct;
-        mAct = new SummonerDetailActivity();
+        SummonerDetailFragment mAct;
+        mAct = new SummonerDetailFragment();
         if (s != null) {
             result = RiotSummonerUtils.parseSummonerResult(s);//json
             if (result != null) {

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SearchLOL.iml" filepath="$PROJECT_DIR$/SearchLOL.iml" group="SearchLOL" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SearchLOL.iml" filepath="$PROJECT_DIR$/.idea/modules/SearchLOL.iml" group="SearchLOL" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="SearchLOL/app" />
     </modules>
   </component>

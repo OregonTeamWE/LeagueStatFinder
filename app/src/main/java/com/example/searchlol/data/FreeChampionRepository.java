@@ -10,8 +10,6 @@ import com.example.searchlol.asynctask.FreeChampionAsyncTask;
 import com.example.searchlol.dataclass.FreeChampionInfo;
 import com.example.searchlol.utils.RiotSummonerUtils;
 
-import static com.example.searchlol.MainActivity.trigger;
-
 public class FreeChampionRepository {
     private static final String TAG = FreeChampionRepository.class.getSimpleName();
     private MutableLiveData<FreeChampionInfo> mSearchResults;

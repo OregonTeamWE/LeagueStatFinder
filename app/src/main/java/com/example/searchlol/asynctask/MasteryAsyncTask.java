@@ -1,13 +1,9 @@
 package com.example.searchlol.asynctask;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.example.searchlol.MainActivity;
-import com.example.searchlol.SummonerDetailActivity;
-import com.example.searchlol.dataclass.ChampionInfo;
+import com.example.searchlol.SummonerDetailFragment;
 import com.example.searchlol.dataclass.ChampionMasteryClass;
-import com.example.searchlol.utils.ChampionInfoUtil;
 import com.example.searchlol.utils.NetworkUtils;
 import com.example.searchlol.utils.RiotSummonerUtils;
 
@@ -38,7 +34,7 @@ public class MasteryAsyncTask extends AsyncTask<String, Void, String> {
         ChampionMasteryClass result2;
         ChampionMasteryClass result3;
 
-        SummonerDetailActivity summonerDetailActivity = new SummonerDetailActivity();
+        SummonerDetailFragment summonerDetailActivity = new SummonerDetailFragment();
         if (s != null) {
             result1 = RiotSummonerUtils.parseMasteryResult(s, 0);//json
             result2 = RiotSummonerUtils.parseMasteryResult(s, 1);//json

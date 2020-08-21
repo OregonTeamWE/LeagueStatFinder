@@ -12,13 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -26,28 +24,27 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.example.searchlol.dataclass.ChampionInfo;
 import com.example.searchlol.dataclass.ChampionMasteryClass;
-import com.example.searchlol.dataclass.SummonerClass;
-import com.bumptech.glide.Glide;
-
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Date;
-
 import com.example.searchlol.dataclass.RankClass;
+import com.example.searchlol.dataclass.SummonerClass;
 import com.example.searchlol.utils.ChampionInfoUtil;
 import com.example.searchlol.utils.NetworkUtils;
 import com.example.searchlol.viewmodel.SavedSummonerViewModel;
 
-public class SummonerDetailActivity extends Fragment implements View.OnClickListener {
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+public class SummonerDetailFragment extends Fragment implements View.OnClickListener {
 
     public static final String EXTRA_GITHUB_REPO = "SummonerDetail";
     public Boolean setOnce = false;
     public SummonerClass mRepo = new SummonerClass();
 
-    public ChampionDetailActivity mAct;
+    public ChampionDetailFragment mAct;
     private static String myLevel;
     private static String myUsername;
     private static int myIcon;
@@ -63,15 +60,19 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
     private static String accountId;
     private SavedSummonerViewModel savedSummonerViewModel;
     private boolean like;
-
+    private FragmentManager fManager;
+    private FragmentTransaction fTransaction;
     private FragmentActivity myContext;
+    public static HistoryActivity homeFragment=null;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        fManager = this.getActivity().getSupportFragmentManager();
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_lolmatch, container, false);
+
+
     }
 
     public void receiveData(SummonerClass myResult) {
@@ -139,12 +140,9 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
         String formattedDate = sdf.format(date);
         return formattedDate;
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-
         savedSummonerViewModel = new ViewModelProvider(
                 this,
                 new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication()))
@@ -216,27 +214,31 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
             historyButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), HistoryActivity.class);
-                    intent.putExtra("userID", accountId);
-                    startActivity(intent);
+                    fTransaction= fManager.beginTransaction();
+                    if(homeFragment == null){
+                        homeFragment=new HistoryActivity();
+                        fTransaction.add(R.id.ly_content,homeFragment);
+                    }else{
+                        fTransaction.show(homeFragment);
+                    }
+                    SummonerDetailFragment.this.getActivity().getIntent().putExtra("userID", accountId);
+                    fTransaction.commit();
+
                 }
 
             });
 
         }
-
         savedSummonerViewModel = new ViewModelProvider(
                 this,
                 new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())
         ).get(SavedSummonerViewModel.class);
-
         savedSummonerViewModel.getAllSummoners().observe(getViewLifecycleOwner(), new Observer<List<SummonerClass>>() {
             @Override
             public void onChanged(List<SummonerClass> gitHubRepos) {
                 Log.d("SQL size", String.valueOf(gitHubRepos.size()));
             }
         });
-
         if (savedSummonerViewModel.getSummonerByName(mId)) Log.d("66666666666", "gogogogogog ");
         Log.d("yyyyyyyyyyyyyyyyy", String.valueOf(like));
 
@@ -247,7 +249,7 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
         getActivity().getMenuInflater().inflate(R.menu.repo_detail, menu);
         final MenuItem item = menu.findItem(R.id.action_save_favorite_summoner);
         like = savedSummonerViewModel.getSummonerByName(mId);
-
+        System.out.println("================================");
         //Log.d("TAG", String.valueOf(like));
 
         if (like) {
@@ -292,20 +294,20 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
                 break;
 
             case R.id.iv_champ1:
-                mAct = new ChampionDetailActivity();
+                mAct = new ChampionDetailFragment();
                 mAct.receiveMaster(mC1);
                 mAct.receiveBio(mChampBio1);
 
                 getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.iv_champ2:
-                mAct = new ChampionDetailActivity();
+                mAct = new ChampionDetailFragment();
                 mAct.receiveMaster(mC2);
                 mAct.receiveBio(mChampBio2);
                 getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.iv_champ3:
-                mAct = new ChampionDetailActivity();
+                mAct = new ChampionDetailFragment();
                 mAct.receiveMaster(mC3);
                 mAct.receiveBio(mChampBio3);
 
@@ -348,7 +350,7 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
         @Override
         protected void onPostExecute(String s) {
             ChampionInfo result = ChampionInfoUtil.parseChampionInfo(s);
-            SummonerDetailActivity summonerDetailActivity = new SummonerDetailActivity();
+            SummonerDetailFragment summonerDetailActivity = new SummonerDetailFragment();
             summonerDetailActivity.receiveChampionName1(result);
             //Log.d("TAG", "onCreate championInfo: " + result.name + "\n" + result.shortBio);
         }
@@ -375,7 +377,7 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
         @Override
         protected void onPostExecute(String s) {
             ChampionInfo result = ChampionInfoUtil.parseChampionInfo(s);
-            SummonerDetailActivity summonerDetailActivity = new SummonerDetailActivity();
+            SummonerDetailFragment summonerDetailActivity = new SummonerDetailFragment();
             summonerDetailActivity.receiveChampionName2(result);
             //Log.d("TAG", "onCreate championInfo: " + result.name + "\n" + result.shortBio);
         }
@@ -402,7 +404,7 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
         @Override
         protected void onPostExecute(String s) {
             ChampionInfo result = ChampionInfoUtil.parseChampionInfo(s);
-            SummonerDetailActivity summonerDetailActivity = new SummonerDetailActivity();
+            SummonerDetailFragment summonerDetailActivity = new SummonerDetailFragment();
             summonerDetailActivity.receiveChampionName3(result);
             //Log.d("TAG", "onCreate championInfo: " + result.name + "\n" + result.shortBio);
 
