@@ -14,9 +14,9 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@anim/slide_out_left"/>
-        <activity
-            android:name=".SummonerDetailActivity"
-            android:parentActivityName=".MainActivity" />
+<!--        <activity-->
+<!--            android:name=".SummonerDetailActivity"-->
+<!--            android:parentActivityName=".MainActivity" />-->
         <activity
             android:name=".ChampionDetailActivity"
             android:parentActivityName=".MainActivity" />

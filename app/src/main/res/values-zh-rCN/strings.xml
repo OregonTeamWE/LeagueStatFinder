@@ -4,7 +4,6 @@
     <string name="title">欢迎使用LOL数据盒子</string>
     <string name="search_button">查找战绩</string>
     <string name="enter_name">输入召唤师名称</string>
-    <string name="change_region">更换服务器</string>
     <string name="main_setting">设置</string>
     <string name="nav_search">查询战绩</string>
     <string name="nav_saved_summoner">收藏玩家</string>
@@ -39,4 +38,5 @@
     <string name="pref_user_title">你好，召唤师</string>
     <string name="view_last_20_tft_match_histories">查看最近20场自走棋比赛</string>
     <string name="tft_status_coming_soon">自走棋数据敬请期待</string>
+    <string name="nav_setting">设置</string>
 </resources>

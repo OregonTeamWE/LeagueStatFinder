@@ -9,12 +9,14 @@
         android:dialogTitle="@string/pref_sort_title"
         android:entries="@array/pref_sort_entries"
         android:entryValues="@array/pref_sort_values"
-        android:defaultValue="@string/pref_sort_default"/>
+        android:defaultValue="@string/pref_sort_default"
+        android:icon="@drawable/ic_change_server"/>
 
 
     <EditTextPreference
         android:key="@string/pref_user_key"
-        android:title="@string/pref_user_title" />
+        android:title="@string/pref_user_title"
+        android:icon="@drawable/ic_info"/>
 
 
 </PreferenceScreen>
