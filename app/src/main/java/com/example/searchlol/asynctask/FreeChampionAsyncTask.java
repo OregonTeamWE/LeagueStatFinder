@@ -2,13 +2,11 @@ package com.example.searchlol.asynctask;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
 import com.example.searchlol.dataclass.FreeChampionInfo;
 import com.example.searchlol.newLayout.FreeChampFragment;
 import com.example.searchlol.newLayout.StoreFragment;
 import com.example.searchlol.utils.NetworkUtils;
 import com.example.searchlol.utils.RiotSummonerUtils;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

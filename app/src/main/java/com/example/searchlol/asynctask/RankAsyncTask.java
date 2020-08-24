@@ -2,7 +2,8 @@ package com.example.searchlol.asynctask;
 
 import android.os.AsyncTask;
 
-import com.example.searchlol.SummonerDetailFragment;
+import com.example.searchlol.R;
+import com.example.searchlol.SummonerDetailActivity;
 import com.example.searchlol.dataclass.RankClass;
 import com.example.searchlol.utils.NetworkUtils;
 import com.example.searchlol.utils.RiotSummonerUtils;
@@ -33,9 +34,9 @@ public class RankAsyncTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         RankClass result;
-        SummonerDetailFragment mAct;
+        SummonerDetailActivity mAct;
         if (s != null) {
-            mAct = new SummonerDetailFragment();
+            mAct = new SummonerDetailActivity();
             result = RiotSummonerUtils.parseRankResult(s);//json
 
             if (result != null) {

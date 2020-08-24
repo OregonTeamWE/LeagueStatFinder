@@ -1,8 +1,9 @@
 package com.example.searchlol;
 
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class getCompanionActivity extends Fragment {
+public class getCompanionActivity extends AppCompatActivity {
+
     public getCompanionActivity(){
 
     }

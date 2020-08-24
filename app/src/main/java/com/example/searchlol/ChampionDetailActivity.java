@@ -2,13 +2,10 @@ package com.example.searchlol;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.searchlol.dataclass.ChampionMasteryClass;
@@ -16,8 +13,8 @@ import com.example.searchlol.dataclass.ChampionMasteryClass;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ChampionDetailFragment extends Fragment {
-    public static final String TAG = "ChampionDetailFragment";
+public class ChampionDetailActivity extends AppCompatActivity {
+    public static final String TAG = "ChampionDetailActivity";
     private boolean shouldAllowBack = false;
     private static int mName, mLevel, mPoints;
     private static long mTime;
@@ -36,29 +33,30 @@ public class ChampionDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.another_scene,container,false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.another_scene);
 
-        Intent intent = this.getActivity().getIntent();
+        Intent intent = getIntent();
         if (intent != null) {
-            TextView repoLevelTV = view.findViewById(R.id.tv_champ_Level);
+            TextView repoLevelTV = findViewById(R.id.tv_champ_Level);
             repoLevelTV.setText("Level: " + mLevel);
 
             String url = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/" + mName + ".png";
 
-            ImageView championIcon = view.findViewById(R.id.iv_champ_icon);
+            ImageView championIcon = findViewById(R.id.iv_champ_icon);
             Glide.with(championIcon.getContext()).load(url).into(championIcon);
 
-            TextView repoSecondTV = view.findViewById(R.id.tv_champ_mastery);
+            TextView repoSecondTV = findViewById(R.id.tv_champ_mastery);
             repoSecondTV.setText("Mastery Points: " + mPoints);
 
-            TextView repoTimeTV = view.findViewById(R.id.tv_champ_time);
+            TextView repoTimeTV = findViewById(R.id.tv_champ_time);
             repoTimeTV.setText("Last Played: " + changeDate(mTime));
 
-            TextView repoDesTV = view.findViewById(R.id.tv_champ_detailed_des);
+            TextView repoDesTV = findViewById(R.id.tv_champ_detailed_des);
             repoDesTV.setText("Champion Story: \n" + mBio);
 
-            TextView repoChestTV = view.findViewById(R.id.tv_champ_chest);
+            TextView repoChestTV = findViewById(R.id.tv_champ_chest);
             String mStatus = "";
             if (!mChest) {
                 mStatus = "Acquired";
@@ -68,7 +66,6 @@ public class ChampionDetailFragment extends Fragment {
             repoChestTV.setText("Season Chest Status: " + mStatus);
 
         }
-        return view;
     }
 
     public String changeDate(long unixSeconds) {
@@ -78,10 +75,9 @@ public class ChampionDetailFragment extends Fragment {
         return formattedDate;
     }
 
-
-
+    @Override
     public void finish() {
-        this.getActivity().finish();
-        this.getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

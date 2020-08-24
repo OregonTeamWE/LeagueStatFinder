@@ -1,18 +1,14 @@
 package com.example.searchlol;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,8 +18,8 @@ import com.example.searchlol.utils.NetworkUtils;
 import com.example.searchlol.utils.RiotSummonerUtils;
 import com.example.searchlol.utils.TFTUtils;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
@@ -31,9 +27,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class TFTFragment extends Fragment implements TFTHistoryAdapter.OnNoteListener {
+public class TFTActivity extends AppCompatActivity implements TFTHistoryAdapter.OnNoteListener {
 
-    private static final String TAG = TFTFragment.class.getSimpleName();
+    private static final String TAG = TFTActivity.class.getSimpleName();
     private TextView mErrorMessageTV;
     private String mPuuid;
     private RecyclerView historyRV;
@@ -44,25 +40,26 @@ public class TFTFragment extends Fragment implements TFTHistoryAdapter.OnNoteLis
     private ArrayList<MatchDto> matchInfos = new ArrayList();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tftmatch_history,container,false);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.tftmatch_history);
 
-        mErrorMessageTV = view.findViewById(R.id.tft_error_message);
+        mErrorMessageTV = findViewById(R.id.tft_error_message);
 
-        Intent intent = this.getActivity().getIntent();
+        Intent intent = getIntent();
         mPuuid = (String) intent.getSerializableExtra("puuid");
         //Log.d(TAG, String.valueOf(mPuuid));
 
         mHistoryAdapter = new TFTHistoryAdapter(matchInfos,this::onNoteClick);
-        historyRV = view.findViewById(R.id.tfthistory_RV);
+        historyRV = findViewById(R.id.tfthistory_RV);
         historyRV.setAdapter(mHistoryAdapter);
-        historyRV.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        historyRV.setLayoutManager(new LinearLayoutManager(this));
         historyRV.setHasFixedSize(true);
 
-        mLoadingIndicatorPB = view.findViewById(R.id.tft_pb_loading_indicator);
+        mLoadingIndicatorPB = findViewById(R.id.tft_pb_loading_indicator);
 
         try {
-            is = this.getActivity().getApplicationContext().getAssets().open("companion.json");
+            is = getApplicationContext().getAssets().open("companion.json");
             Log.d("good on parsing", String.valueOf(is));
             JSONParser jsonParser = new JSONParser();
             a = (JSONArray) jsonParser.parse(new InputStreamReader(is, "UTF-8"));
@@ -71,17 +68,18 @@ public class TFTFragment extends Fragment implements TFTHistoryAdapter.OnNoteLis
         }
 
         matchHistorySearch(mPuuid);
-        return view;
     }
 
     public String getCompanionUrl(String myCompanion){
         String url="";
-        try {
 
-            for (int i=0;i<a.length() ;i++)
+        try {
+            String name ="";
+
+            for (Object o : a)
             {
-                JSONObject person = (JSONObject) a.get(i);
-               String  name = (String) person.get("contentId");
+                JSONObject person = (JSONObject) o;
+                name = (String) person.get("contentId");
                 if(name.equals(myCompanion)){
                     url= ((String) person.get("loadoutsIcon")).toLowerCase();
                 }
@@ -120,21 +118,18 @@ public class TFTFragment extends Fragment implements TFTHistoryAdapter.OnNoteLis
     private void matchHistorySearch(String myname) {
         String url= TFTUtils.buildTFTMatchURL(myname);
         Log.d("TFT Fragment",url);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
-            new TFTHistorySearchTask().execute(url);
-        }
+        new TFTHistorySearchTask().execute(url);
     }
 
     @Override
     public void onNoteClick(int position){
 
-        Intent newIntent = new Intent(this.getContext(), TFTOpponentFragment.class);
+        Intent newIntent = new Intent(this,TFTOpponentActivity.class);
         newIntent.putExtra("gameMatch", matchInfos.get(position));
         startActivity(newIntent);
     }
 
-    @SuppressLint("NewApi")
-    private class TFTHistorySearchTask extends AsyncTask<String, Void, ArrayList<MatchDto>> {
+    public class TFTHistorySearchTask extends AsyncTask<String, Void, ArrayList<MatchDto>> {
 
         @Override
         protected void onPreExecute() {

@@ -13,12 +13,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.actions"
-            android:resource="@anim/slide_out_left" />
-
-        <activity
-            android:name=".SavedSummonerActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".MainActivity" />
+            android:resource="@anim/slide_out_left"/>
         <activity
             android:name=".SummonerDetailActivity"
             android:parentActivityName=".MainActivity" />
@@ -35,12 +30,6 @@
             android:name=".TFTActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".homeActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
@@ -50,9 +39,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".HistoryActivity"
-            android:parentActivityName=".SummonerDetailActivity" />
+<!--        <activity-->
+<!--            android:name=".HistoryActivity"-->
+<!--            android:parentActivityName=".SummonerDetailFragment" />-->
     </application>
 
 

@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +22,7 @@ import com.example.searchlol.utils.NetworkUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class HistoryActivity extends Fragment {
+public class HistoryActivity extends AppCompatActivity {
     private static final String TAG = HistoryActivity.class.getSimpleName();
     private TextView mErrorMessageTV;
     private String mID;
@@ -33,22 +32,27 @@ public class HistoryActivity extends Fragment {
     private ProgressBar mLoadingIndicatorPB;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.match_histroy,container,false);
-        Intent intent = this.getActivity().getIntent();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.match_histroy);
+
+        Intent intent = getIntent();
         mID = (String) intent.getSerializableExtra("userID");
         Log.d(TAG, mID);
-        mErrorMessageTV = view.findViewById(R.id.tv_error_message);
+        mErrorMessageTV = findViewById(R.id.tv_error_message);
+
         mHistoryAdapter = new HistoryAdapter();
-        historyRV = view.findViewById(R.id.history_RV);
+        historyRV = findViewById(R.id.history_RV);
         historyRV.setAdapter(mHistoryAdapter);
-        historyRV.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        historyRV.setLayoutManager(new LinearLayoutManager(this));
         historyRV.setHasFixedSize(true);
-        mLoadingIndicatorPB = view.findViewById(R.id.pb_loading_indicator);
+
+        mLoadingIndicatorPB = findViewById(R.id.pb_loading_indicator);
         matchHistorySearch();
         Log.d(TAG, "in History");
-        return view;
+
     }
+
 
     private void matchHistorySearch() {
         String url = HistoryUtils.buildHistoryListSearchURL(mID);

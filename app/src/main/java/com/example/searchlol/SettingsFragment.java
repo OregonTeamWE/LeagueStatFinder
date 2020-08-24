@@ -11,8 +11,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-
-                addPreferencesFromResource(R.xml.prefs);
+        addPreferencesFromResource(R.xml.prefs);
         EditTextPreference userPref = findPreference(getString(R.string.pref_user_key));
         userPref.setSummary(userPref.getText());
     }
@@ -28,8 +27,8 @@ public class SettingsFragment extends PreferenceFragmentCompat
     @Override
     public void onResume() {
         super.onResume();
-//        getPreferenceScreen().getSharedPreferences()
-//                .registerOnSharedPreferenceChangeListener(this);
+        getPreferenceScreen().getSharedPreferences()
+                .registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override

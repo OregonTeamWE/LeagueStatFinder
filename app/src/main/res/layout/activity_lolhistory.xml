@@ -111,13 +111,13 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Summoner's drift"
+            android:text="@string/summoner_s_drift"
             />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TFT Mode"
+            android:text="@string/tft_mode"
             />
     </com.google.android.material.tabs.TabLayout>
 

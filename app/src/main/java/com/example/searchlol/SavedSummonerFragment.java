@@ -1,5 +1,6 @@
 package com.example.searchlol;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,9 +34,8 @@ public class SavedSummonerFragment extends Fragment implements SavedSummonerAdap
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_saved_name,container,false);
+        View view = inflater.inflate(R.layout.activity_saved_name, container, false);
         adapter = new SavedSummonerAdapter(this);
-
         RecyclerView savedReposRV = view.findViewById(R.id.rv_saved_name);
         savedReposRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
         savedReposRV.setHasFixedSize(true);
@@ -67,7 +67,7 @@ public class SavedSummonerFragment extends Fragment implements SavedSummonerAdap
                 Toast.makeText(SavedSummonerFragment.this.getContext(), "Champion deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(savedReposRV);
-         return view;
+        return view;
     }
 
     @Override
@@ -76,16 +76,16 @@ public class SavedSummonerFragment extends Fragment implements SavedSummonerAdap
         SummonerSearchRepository newSearch = new SummonerSearchRepository("");
         newSearch.loadSearchResults(summonerClass.name);
 
-//        final Intent intent = new Intent(this, LOLFragment.class);
+        Intent intent = new Intent(this.getContext(), LOLActivity.class);
 
         myTimer = new Timer();
         myTimer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 if (trigger == 1) {
-//                    startActivity(intent);
+                    startActivity(intent);
                     trigger = 0;
                     myTimer.cancel();
-                }else if (trigger ==2){
+                } else if (trigger == 2) {
                     myTimer.cancel();
                     trigger = 0;
                 }

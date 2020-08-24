@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.searchlol.dataclass.SummonerClass;
@@ -26,7 +25,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 
-public class TFTOpponentFragment extends Fragment {
+public class TFTOpponentActivity extends AppCompatActivity {
     private ImageView image0;
     private ImageView image1;
     private ImageView image2;
@@ -48,40 +47,40 @@ public class TFTOpponentFragment extends Fragment {
     private ProgressBar mLoadingIndicatorPB;
     private Map<Integer, ArrayList<String>> myMap = new TreeMap<Integer, ArrayList<String>>();
 
-    public TFTOpponentFragment() {
+    public TFTOpponentActivity() {
 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_tablayout,container,false);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.tftopponent_detail);
 
-        Intent intent = this.getActivity().getIntent();
+        Intent intent = getIntent();
         matchInfos = (MatchDto) intent.getSerializableExtra("gameMatch");
 
-        mLoadingIndicatorPB = view.findViewById(R.id.tft_pb_loading_indicator2);
+        mLoadingIndicatorPB = findViewById(R.id.tft_pb_loading_indicator2);
 
-        image0=view.findViewById(R.id.iv_tftplayer0);
-        image1=view.findViewById(R.id.iv_tftplayer1);
-        image2=view.findViewById(R.id.iv_tftplayer2);
-        image3=view.findViewById(R.id.iv_tftplayer3);
-        image4=view.findViewById(R.id.iv_tftplayer4);
-        image5=view.findViewById(R.id.iv_tftplayer5);
-        image6=view.findViewById(R.id.iv_tftplayer6);
-        image7=view.findViewById(R.id.iv_tftplayer7);
-        image8=view.findViewById(R.id.iv_tftplayer8);
+        image0=findViewById(R.id.iv_tftplayer0);
+        image1=findViewById(R.id.iv_tftplayer1);
+        image2=findViewById(R.id.iv_tftplayer2);
+        image3=findViewById(R.id.iv_tftplayer3);
+        image4=findViewById(R.id.iv_tftplayer4);
+        image5=findViewById(R.id.iv_tftplayer5);
+        image6=findViewById(R.id.iv_tftplayer6);
+        image7=findViewById(R.id.iv_tftplayer7);
+        image8=findViewById(R.id.iv_tftplayer8);
 
-        textname1=view.findViewById(R.id.iv_tftplayername1);
-        textname2=view.findViewById(R.id.iv_tftplayername2);
-        textname3=view.findViewById(R.id.iv_tftplayername3);
-        textname4=view.findViewById(R.id.iv_tftplayername4);
-        textname5=view.findViewById(R.id.iv_tftplayername5);
-        textname6=view.findViewById(R.id.iv_tftplayername6);
-        textname7=view.findViewById(R.id.iv_tftplayername7);
-        textname8=view.findViewById(R.id.iv_tftplayername8);
+        textname1=findViewById(R.id.iv_tftplayername1);
+        textname2=findViewById(R.id.iv_tftplayername2);
+        textname3=findViewById(R.id.iv_tftplayername3);
+        textname4=findViewById(R.id.iv_tftplayername4);
+        textname5=findViewById(R.id.iv_tftplayername5);
+        textname6=findViewById(R.id.iv_tftplayername6);
+        textname7=findViewById(R.id.iv_tftplayername7);
+        textname8=findViewById(R.id.iv_tftplayername8);
 
         new TFTOpponentSearchTask().execute();
-        return view;
     }
 
 

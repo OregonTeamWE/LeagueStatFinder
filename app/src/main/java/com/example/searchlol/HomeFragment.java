@@ -33,6 +33,7 @@ public class HomeFragment extends Fragment {
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         fragmentTransaction.commit();
+
         mytabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -40,19 +41,19 @@ public class HomeFragment extends Fragment {
                 switch (tab.getPosition()) {
                     case 0:
                         fragment = new FreeChampFragment();
-                        Log.d("HomeFragment onClicked","Click on FREE CHAMPION");
+                        Log.d("homeActivity onClicked","Click on FREE CHAMPION");
                         break;
                     case 1:
                         fragment = new NewsFragment();
-                        Log.d("HomeFragment onClicked","Click on NEWS");
+                        Log.d("homeActivity onClicked","Click on NEWS");
                         break;
                     case 2:
                         fragment = new StoreFragment();
-                        Log.d("HomeFragment onClicked","Click on STORE SALES");
+                        Log.d("homeActivity onClicked","Click on STORE SALES");
                         break;
                     case 3:
                         fragment = new LiveFragment();
-                        Log.d("HomeFragment onClicked","Click on LIVE");
+                        Log.d("homeActivity onClicked","Click on LIVE");
                         break;
                 }
                 FragmentManager fm = HomeFragment.this.getActivity().getSupportFragmentManager();
@@ -60,6 +61,7 @@ public class HomeFragment extends Fragment {
                 ft.replace(R.id.frameLayout, fragment);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.commit();
+
             }
 
             @Override
@@ -72,7 +74,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        return view;
+    return view;
     }
 
 

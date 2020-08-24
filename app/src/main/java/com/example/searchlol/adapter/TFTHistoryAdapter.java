@@ -12,7 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.searchlol.R;
-import com.example.searchlol.TFTFragment;
+import com.example.searchlol.TFTActivity;
 import com.example.searchlol.dataclass.TFTData.MatchDto;
 import com.example.searchlol.dataclass.TFTData.ParticipantDto;
 import com.example.searchlol.dataclass.TFTData.units;
@@ -135,7 +135,7 @@ public class TFTHistoryAdapter extends RecyclerView.Adapter<TFTHistoryAdapter.TF
             dateTime.setText(receiveYearlyDate(info.info.game_datetime));
             ParticipantDto mypart = new ParticipantDto();
             String companionId="";
-            TFTFragment myComp= new TFTFragment();
+            TFTActivity myComp= new TFTActivity();
 
             String mypic="";
             for(ParticipantDto each : info.info.participants){

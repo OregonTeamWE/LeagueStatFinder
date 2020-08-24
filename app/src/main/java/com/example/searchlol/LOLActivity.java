@@ -2,31 +2,30 @@ package com.example.searchlol;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.searchlol.newLayout.TFTFragment;
 import com.google.android.material.tabs.TabLayout;
 
 
-public class LOLFragment extends Fragment {
+public class LOLActivity extends AppCompatActivity {
     public static final String EXTRA_GITHUB_REPO = "SummonerDetail";
     Fragment fragment = null;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_lolhistory,container,false);
-        TabLayout mytabLayout= view.findViewById(R.id.tab_lollayout);
-        fragment = new SummonerDetailFragment();
-        fragmentManager = this.getActivity().getSupportFragmentManager();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lolhistory);
 
+        TabLayout mytabLayout= findViewById(R.id.tab_lollayout);
+
+        fragment = new SummonerDetailActivity();
+        fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayoutlol, fragment);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -38,16 +37,16 @@ public class LOLFragment extends Fragment {
                 // Fragment fragment = null;
                 switch (tab.getPosition()) {
                     case 0:
-                        fragment = new SummonerDetailFragment();
-                        Log.d("HomeFragment onClicked","Click on FREE CHAMPION");
+                        fragment = new SummonerDetailActivity();
+                        Log.d("homeActivity onClicked","Click on FREE CHAMPION");
                         break;
                     case 1:
                         fragment = new TFTFragment();
-                        Log.d("HomeFragment onClicked","Click on NEWS");
+                        Log.d("homeActivity onClicked","Click on NEWS");
                         break;
                 }
 
-                FragmentManager fm = LOLFragment.this.getActivity().getSupportFragmentManager();
+                FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.frameLayoutlol, fragment);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -64,7 +63,6 @@ public class LOLFragment extends Fragment {
 
             }
         });
-        return view;
     }
 
 
