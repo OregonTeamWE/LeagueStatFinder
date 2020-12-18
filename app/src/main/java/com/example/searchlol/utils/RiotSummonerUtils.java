@@ -18,8 +18,8 @@ public class RiotSummonerUtils {
     private final static String SUMMONERS_RANK_URL = "api.riotgames.com/lol/league/v4/entries/by-summoner/";
     private final static String FREE_CHAMPION_URL ="https://na1.api.riotgames.com/lol/platform/v3/champion-rotations";
 
-    private final static String API_KEY = "RGAPI-cbab7df3-8f08-41ab-8b12-e6a246a09224";
-    private final static String TFTAPI_KEY ="RGAPI-d1f80c66-22fe-409e-a099-a0a18483c6a5";
+    private final static String API_KEY = "RGAPI-1d4d1218-161a-4b05-ad3e-b716322428ac";
+    private final static String TFTAPI_KEY ="RGAPI-1d4d1218-161a-4b05-ad3e-b716322428ac";
     private static String REGION = "NA1.";
 
     public void changeRegion(String region){

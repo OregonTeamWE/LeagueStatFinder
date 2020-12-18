@@ -12,7 +12,7 @@ public class SummonerClass implements Serializable {
     public String id;
     public String name;
 
-    public String summonerLevel;
+    public long summonerLevel;
     public String accountId;
 
     public int profileIconId;

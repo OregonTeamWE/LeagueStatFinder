@@ -14,7 +14,7 @@ public class HistoryUtils {
     private final static String HISTORY_END_INDEX = "endIndex";
     private final static String HISTORY_BEGIN_INDEX = "beginIndex";
     private final static String HISTORY_KEY = "api_key";
-    private final static String KEY = "RGAPI-cbab7df3-8f08-41ab-8b12-e6a246a09224";
+    private final static String KEY = "RGAPI-1d4d1218-161a-4b05-ad3e-b716322428ac";
     private static String REGION="NA1.";
     private final static String MATCH_BASE_URL = "api.riotgames.com/lol/match/v4/matches/";
 

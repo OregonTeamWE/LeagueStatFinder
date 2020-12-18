@@ -48,7 +48,7 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
     public SummonerClass mRepo = new SummonerClass();
 
     public ChampionDetailActivity mAct;
-    private static String myLevel;
+    private static long myLevel;
     private static String myUsername;
     private static int myIcon;
     public static String mId;
@@ -154,7 +154,7 @@ public class SummonerDetailActivity extends Fragment implements View.OnClickList
 
         if (intent != null) {
             TextView repoLevelTV = getActivity().findViewById(R.id.tv_summoner_Level);
-            repoLevelTV.setText(myLevel);
+            repoLevelTV.setText(Long.toString(myLevel));
             TextView repoNameTV = getActivity().findViewById(R.id.tv_summoner_name);
             repoNameTV.setText(myUsername);
             TextView repoRankTV = getActivity().findViewById(R.id.tv_Rank);
