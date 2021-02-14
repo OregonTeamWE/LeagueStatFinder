@@ -1,4 +1,4 @@
-# CS 492 Final Project
+# League Finder
 
 Below is our features of SearchLOL
 
